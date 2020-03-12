@@ -1,0 +1,46 @@
+{
+    "name": "belniakmedia/craft-excerptify",
+    "description": "Provides the excerptify twig filter which truncates the provided variable's text or html to the nearest whole word based on the provided character length.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "excerpt",
+        "excertpify",
+        "twig filter"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Belniak Media Inc.",
+            "homepage": "http://www.belniakmedia.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0",
+        "ext-dom": "*"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "belniakmedia\\craftExcerptify\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Excerptify",
+        "handle": "craft-excerptify",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://github.com/BelniakMedia/craft-excerptify/blob/master/CHANGELOG",
+        "class": "belniakmedia\\craftExcerptify\\ExcerptifyTwigFilter"
+    }
+}
