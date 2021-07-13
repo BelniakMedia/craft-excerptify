@@ -54,6 +54,11 @@ class ExcerptifyTwigExtension extends \Twig_Extension
 			return trim(mb_substr($text, 0, $characterCount));
 		}
 
+		// avoid losing last word if text length is already less than character count
+		if(mb_strlen($text) <= $characterCount) {
+			return $text;
+		}
+
 		// break string at character count.
 		$text = mb_substr($text, 0, $characterCount);
 
@@ -61,7 +66,7 @@ class ExcerptifyTwigExtension extends \Twig_Extension
 		$spacePos = mb_strrpos($text, " ");
 
 		// return trimmed text.
-		return trim(mb_substr($text, 0, $spacePos));
+		return rtrim(mb_substr($text, 0, $spacePos));
 
 	}
 
