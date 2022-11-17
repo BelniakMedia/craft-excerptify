@@ -1,6 +1,6 @@
 <?php
 /**
- * Excerptify Twig Filter plugin for Craft CMS 3.x
+ * Excerptify Twig Filter plugin for Craft CMS 4.x
  *
  * @link      http://www.belniakmedia.com
  * @copyright Copyright (c) 2017 Belniak Media Inc.
@@ -8,12 +8,15 @@
 
 namespace belniakmedia\craftExcerptify\twigextensions;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+
 /**
  * @author    Belniak Media Inc.
  * @package   craft-excerptify
  * @since     1.0.0
  */
-class ExcerptifyTwigExtension extends \Twig_Extension
+class ExcerptifyTwigExtension extends AbstractExtension
 {
 	// Public Methods
 	// =========================================================================
@@ -21,24 +24,16 @@ class ExcerptifyTwigExtension extends \Twig_Extension
 	/**
 	 * @inheritdoc
 	 */
-	public function getName()
-	{
-		return 'Excerptify Twig Filter';
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function getFilters()
-	{
+	public function getFilters(): array
+    {
 		return [
-			new \Twig_SimpleFilter('excerptify', [$this, 'excerptify'], ['pre_escape' => 'html', 'is_safe' => array('html')]),
+			new TwigFilter('excerptify', [$this, 'excerptify'], ['pre_escape' => 'html', 'is_safe' => array('html')]),
 		];
 	}
 
-	// currently only works with plan strings or full html document.
-	public function excerptify($text = null, $characterCount = 200, $forceBreakWord = false)
-	{
+	// Works with plain strings (will strip all HTML tags but retain html text content).
+	public function excerptify($text = null, $characterCount = 200, $forceBreakWord = false): string
+    {
 
 		// ensure a positive character count
 		if(!is_int($characterCount) || $characterCount <= 0) { $characterCount = 200; }

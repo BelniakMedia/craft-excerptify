@@ -1,6 +1,6 @@
 <?php
 /**
- * Excerptify Twig Filter plugin for Craft CMS 3.x
+ * Excerptify Twig Filter plugin for Craft CMS 4.x
  *
  * @link      http://www.belniakmedia.com
  * @copyright Copyright (c) 2017 Belniak Media Inc.

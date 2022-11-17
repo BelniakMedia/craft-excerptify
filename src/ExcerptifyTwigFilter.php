@@ -1,6 +1,6 @@
 <?php
 /**
- * Excerptify Twig Filter plugin for Craft CMS 3.x
+ * Excerptify Twig Filter plugin for Craft CMS 4.x
  *
  * Provides the 'excerptify' twig filter which truncates the provided variable's text or html to the nearest whole word based on the provided character length.
  *
@@ -14,10 +14,6 @@ use belniakmedia\craftExcerptify\twigextensions\ExcerptifyTwigExtension;
 
 use Craft;
 use craft\base\Plugin;
-use craft\services\Plugins;
-use craft\events\PluginEvent;
-
-use yii\base\Event;
 
 /**
  * Class RemarryTwigFilter
@@ -29,16 +25,10 @@ use yii\base\Event;
  */
 class ExcerptifyTwigFilter extends Plugin
 {
-    // Static Properties
-    // =========================================================================
 
-    /**
-     * @var ExcerptifyTwigFilter
-     */
-    public static $plugin;
+    public ?string $name = 'Excerptify';
 
-    // Public Methods
-    // =========================================================================
+    public static ExcerptifyTwigFilter $plugin;
 
     /**
      * @inheritdoc
@@ -50,15 +40,6 @@ class ExcerptifyTwigFilter extends Plugin
 
         Craft::$app->view->registerTwigExtension(new ExcerptifyTwigExtension());
 
-        Event::on(
-            Plugins::class,
-            Plugins::EVENT_AFTER_INSTALL_PLUGIN,
-            function (PluginEvent $event) {
-                if ($event->plugin === $this) {
-                }
-            }
-        );
-
         Craft::info(
             Craft::t(
                 'craft-excerptify',
@@ -68,8 +49,4 @@ class ExcerptifyTwigFilter extends Plugin
             __METHOD__
         );
     }
-
-    // Protected Methods
-    // =========================================================================
-
 }
