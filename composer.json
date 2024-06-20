@@ -1,54 +1,63 @@
 {
-    "name": "belniakmedia/craft-excerptify",
-    "description": "Provides the excerptify twig filter which truncates the provided variable's text or html to the nearest whole word based on the provided character length.",
-    "type": "craft-plugin",
-    "version": "2.0.0",
-    "keywords": [
-        "craft",
-        "cms",
-        "craftcms",
-        "craft-plugin",
-        "excerpt",
-        "excertpify",
-        "twig filter"
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Belniak Media Inc.",
-            "homepage": "http://www.belniakmedia.com"
-        }
-    ],
-    "require": {
-        "php": ">=8.0.0",
-        "craftcms/cms": "^4.0.0",
-        "ext-dom": "*",
-        "ext-mbstring": "*"
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-          "belniakmedia\\craftExcerptify\\": "src/"
-        }
-    },
-    "extra": {
-        "name": "Excerptify",
-        "handle": "craft-excerptify",
-        "schemaVersion": "1.0.0",
-        "hasCpSettings": false,
-        "hasCpSection": false,
-        "changelogUrl": "https://github.com/BelniakMedia/craft-excerptify/blob/master/CHANGELOG",
-        "class": "belniakmedia\\craftExcerptify\\ExcerptifyTwigFilter"
-    },
-    "config": {
-        "allow-plugins": {
-            "yiisoft/yii2-composer": true,
-            "craftcms/plugin-installer": true
-        }
+  "name": "belniakmedia/craft-excerptify",
+  "description": "Provides the excerptify twig filter which truncates the provided variable's text or html to the nearest whole word based on the provided character length.",
+  "type": "craft-plugin",
+  "version": "5.0.0",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "excerpt",
+    "excertpify",
+    "twig filter"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Belniak Media Inc.",
+      "homepage": "https://www.belniakmedia.com"
     }
+  ],
+  "require": {
+    "php": ">=8.0.2",
+    "craftcms/cms": "^4.0|^5.0",
+    "ext-dom": "*",
+    "ext-mbstring": "*"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "belniakmedia\\craftExcerptify\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Excerptify",
+    "handle": "craft-excerptify",
+    "schemaVersion": "1.0.0",
+    "hasCpSettings": false,
+    "hasCpSection": false,
+    "changelogUrl": "https://github.com/BelniakMedia/craft-excerptify/blob/master/CHANGELOG",
+    "class": "belniakmedia\\craftExcerptify\\ExcerptifyTwigFilter"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  },
+  "scripts": {
+    "phpstan": "phpstan --memory-limit=1G"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "craftcms/phpstan": "dev-main",
+    "craftcms/rector": "dev-main"
+  }
 }
