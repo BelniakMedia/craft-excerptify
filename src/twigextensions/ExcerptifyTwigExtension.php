@@ -38,7 +38,10 @@ class ExcerptifyTwigExtension extends AbstractExtension
 		// ensure a positive character count
 		if(!is_int($characterCount) || $characterCount <= 0) { $characterCount = 200; }
 
-		// get all text stripped of html as one line.
+        // Allow entities
+        $text = html_entity_decode(str_replace('&amp;', '&', $text), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        // get all text stripped of html as one line.
 		$text = preg_replace('/\r|\n/', " ", strip_tags($text));
 
 		// replace all occurrences of more than one consecutive space with a single space.
