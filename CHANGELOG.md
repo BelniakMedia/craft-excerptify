@@ -2,6 +2,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+# 5.0.2 - 2025-09-17
+### Added
+- Added 3rd parameter to filter call to allow integrator to pass in the `$allowed_tags` value to use in the `strip_tags` function call internally. This allows the integrator to allow links to remain in place, for example.
+
 # 5.0.1 - 2025-03-31
 ### Added
 - Added proper handling of html entities to convert them to actual characters before processing. This ensures escaped html entity strings are not returned in the output.

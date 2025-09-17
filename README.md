@@ -5,15 +5,27 @@ Provides the `excertify` twig filter which truncates the provided variable's tex
 Parameters
 --
 ```
-excerptify(int $characterCount, bool $forceBreakWord)
+excerptify(int $characterCount, bool $forceBreakWord, null|string|array $allowedTags)
 ```
-| Parameter | Type | Default | Description |
-| :-------- | :--- | :------ | :---------- |
-| $characterCount | Int | 200 | Number of characters to limit result to. |
-| $forceBreakWord | Bool | false | When false, the text will be broken at the last occurring word break character. When true it will return the text up to the exact character limit, breaking a word if necessary. |
+| Parameter       | Type                | Default | Description                                                                                                                                                                      |
+|:----------------|:--------------------|:--------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| $characterCount | Int                 | 200     | Number of characters to limit result to.                                                                                                                                         |
+| $forceBreakWord | Bool                | false   | When false, the text will be broken at the last occurring word break character. When true it will return the text up to the exact character limit, breaking a word if necessary. |
+| $allowedTags    | null\|string\|array | null    | A string representing a single HTML tag or an array of strings representing HTML tags. *Added in 5.0.2*                                                                          |
 
+## Usage Examples
 
-Usage Examples
+---
+
+#### Prevent certain HTML tags from being stripped from the output
+
+Pass a string or array of strings to the third parameter representing the tags that should not be removed:
+```
+<p>{{ postContent | excerptify(200, false, '<a>') }}</p>
+```
+
+*This is a new feature as of 5.0.2*
+
 --
 #### Break at nearest word
 This is the default as in the same sas passing no arguments. Will return full words and the resulting string will not exceed 200 characters.
