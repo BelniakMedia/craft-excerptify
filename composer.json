@@ -2,7 +2,7 @@
   "name": "belniakmedia/craft-excerptify",
   "description": "Provides the excerptify twig filter which truncates the provided variable's text or html to the nearest whole word based on the provided character length.",
   "type": "craft-plugin",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "keywords": [
     "craft",
     "cms",

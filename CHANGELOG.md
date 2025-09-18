@@ -2,6 +2,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+# 5.0.3 - 2025-09-17
+### Added
+- Added full HTML parsing when HTML is detected after non-allowed tags are removed. This parsing ensures only visible characters are counted against the limit and ensures broken or left open HTML tags are not returned due to the string being clipped in the middle of an open tag (which was possible in version 5.0.2 released earlier today).
+- Added a custom `strip_tags` wrapper method to use internally which ensures that text is not left runtogether when html tags are removed which was also possible in earlier versions.
+- Added one more additional parameter to the filter signature (`boolean $trim`) which defaults to false for backward compatibility but when enabled will remove any non-letter-or-number (Unicode supported) characters from the end of the trimmed string (but will allow the end of a html tag (>) to remain when HTML was parsed). When enabled you can rely on there not being any punctuation at the end of the excerpt so you can safely add your own ellipsis or whatever. Be advised this only does the trim when the content was trimmed. If no visible text was removed then the ending punctuation is left intact. You can test for this before adding your own on the front end. See the README.md for more.
+
 # 5.0.2 - 2025-09-17
 ### Added
 - Added 3rd parameter to filter call to allow integrator to pass in the `$allowed_tags` value to use in the `strip_tags` function call internally. This allows the integrator to allow links to remain in place, for example.
